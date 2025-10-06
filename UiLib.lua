@@ -1375,6 +1375,12 @@ function Library:AddLabelWide(config)
 	local text = config.Text or "Wide Label"
 	local color = config.Color or COLORS.Text
 	
+	-- Initialize counter if it doesn't exist
+	if not self.Page._wideLabelCounter then
+		self.Page._wideLabelCounter = 200 -- Start after columns (100) and notes (50)
+	end
+	self.Page._wideLabelCounter = self.Page._wideLabelCounter + 1
+	
 	-- Wide label container - spans full width like notes but simpler
 	local WideLabel = Instance.new("Frame")
 	WideLabel.Name = "WideLabel"
@@ -1383,6 +1389,7 @@ function Library:AddLabelWide(config)
 	WideLabel.BackgroundTransparency = 0.4
 	WideLabel.BorderSizePixel = 0
 	WideLabel.ZIndex = 4
+	WideLabel.LayoutOrder = self.Page._wideLabelCounter
 	WideLabel.Parent = self.Page
 	CreateCorner(WideLabel, 8)
 	CreateStroke(WideLabel, COLORS.Border, 1, 0.7)
@@ -1396,7 +1403,7 @@ function Library:AddLabelWide(config)
 	TextLabel.TextColor3 = color
 	TextLabel.TextSize = 14
 	TextLabel.Font = Enum.Font.GothamMedium
-	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Center
 	TextLabel.ZIndex = 5
 	TextLabel.Parent = WideLabel
 	
