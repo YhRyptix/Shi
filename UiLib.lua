@@ -1,7 +1,7 @@
 -- Glassy Minimalistic UI Library - Part 1: Base Foundation
 -- Dark theme with buttery smooth animations
 
-local UI_LIB_VERSION = "1.0.0"
+local UI_LIB_VERSION = "1.0.1"
 
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -1379,10 +1379,10 @@ function Library:AddLabelWide(config)
 	local color = config.Color or COLORS.Text
 	
 	-- Initialize counter if it doesn't exist
-	if not self.Page._wideLabelCounter then
-		self.Page._wideLabelCounter = 200 -- Start after columns (100) and notes (50)
+	if not Library._wideLabelCounter then
+		Library._wideLabelCounter = 200 -- Start after columns (100) and notes (50)
 	end
-	self.Page._wideLabelCounter = self.Page._wideLabelCounter + 1
+	Library._wideLabelCounter = Library._wideLabelCounter + 1
 	
 	-- Wide label container - spans full width like notes but simpler
 	local WideLabel = Instance.new("Frame")
@@ -1392,7 +1392,7 @@ function Library:AddLabelWide(config)
 	WideLabel.BackgroundTransparency = 0.4
 	WideLabel.BorderSizePixel = 0
 	WideLabel.ZIndex = 4
-	WideLabel.LayoutOrder = self.Page._wideLabelCounter
+	WideLabel.LayoutOrder = Library._wideLabelCounter
 	WideLabel.Parent = self.Page
 	CreateCorner(WideLabel, 8)
 	CreateStroke(WideLabel, COLORS.Border, 1, 0.7)
