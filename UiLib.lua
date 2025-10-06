@@ -1,12 +1,15 @@
 -- Glassy Minimalistic UI Library - Part 1: Base Foundation
 -- Dark theme with buttery smooth animations
 
+local UI_LIB_VERSION = "1.0.0"
+
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 
 local Library = {}
 Library.__index = Library
+Library.Version = UI_LIB_VERSION
 
 -- Settings persistence
 local SettingsFile = "GlassyUI_Settings.json"
